@@ -1,0 +1,43 @@
+﻿@model List<Bilisim.HelloMvc.Models.Ogrenci>
+
+@{
+    Layout = "_Layout1";
+}
+
+<h1>Öğrenci Listesi</h1>
+
+<!-- Yeni Öğrenci Ekle Butonu -->
+<form asp-action="OgrenciEkle" asp-controller="Ogrenci" method="get">
+    <input type="submit" value="Yeni Öğrenci Ekle" class="btn btn-primary mb-3" />
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>İşlem</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Ogrenciid</td>
+                <td>@item.Ad</td>
+                <td>@item.Soyad</td>
+                <td>
+                    <!-- Öğrenci Detayı -->
+                    <a href="@Url.Action("OgrenciDetay", "Ogrenci", new { id = item.Ogrenciid })" class="btn btn-info btn-sm">Detay</a>
+
+                    <!-- Öğrenci Silme -->
+                    <form asp-action="OgrenciSil" asp-controller="Ogrenci" method="post" style="display:inline;" onsubmit="return confirm('Bu öğrenciyi silmek istediğinize emin misiniz?');">
+                        <input type="hidden" name="ogrenciId" value="@item.Ogrenciid" />
+                        <input type="submit" value="Sil" class="btn btn-danger btn-sm" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

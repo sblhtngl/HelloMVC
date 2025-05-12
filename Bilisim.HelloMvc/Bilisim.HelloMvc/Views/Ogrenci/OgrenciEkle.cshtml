@@ -1,0 +1,19 @@
+﻿@model Bilisim.HelloMvc.Models.Ogrenci
+
+@{
+    Layout = "_Layout1";
+}
+
+<h1>Yeni Öğrenci Ekle</h1>
+
+<form asp-action="OgrenciEkle" asp-controller="Ogrenci" method="post">
+    <div class="form-group">
+        <label for="Ad">Ad</label>
+        <input type="text" class="form-control" id="Ad" name="Ad" required />
+    </div>
+    <div class="form-group">
+        <label for="Soyad">Soyad</label>
+        <input type="text" class="form-control" id="Soyad" name="Soyad" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>

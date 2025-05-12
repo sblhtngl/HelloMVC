@@ -1,0 +1,30 @@
+﻿@model Bilisim.HelloMvc.Models.Ogrenci
+
+<h3>Öğrenci Bilgileri</h3>
+
+<table class="table">
+    <tr>
+        <th>Ad</th>
+        <td>@Model.Ad</td>
+    </tr>
+    <tr>
+        <th>Soyad</th>
+        <td>@Model.Soyad</td>
+    </tr>
+</table>
+
+<hr />
+<h4>Bilgileri Güncelle</h4>
+
+<form asp-action="OgrenciGuncelle" asp-controller="Ogrenci" method="post">
+    <input type="hidden" name="Ogrenciid" value="@Model.Ogrenciid" />
+    <div class="form-group">
+        <label>Ad</label>
+        <input type="text" name="Ad" value="@Model.Ad" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Soyad</label>
+        <input type="text" name="Soyad" value="@Model.Soyad" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-success mt-2">Güncelle</button>
+</form>
